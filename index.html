@@ -16,23 +16,22 @@
 </form>
 
 
+
   <table>
     <tbody>
-        <tr ng-repeat="item in items | completedTasks: showCompleted">
-          <td>{{item.text}}</td>
-          <td>{{item.dueDate | date}}</td>
-          <td><input type="checkbox" ng-checked="{{item.completed}}" ng-click="switchCompleted($index)"></td>
-          <td><a href="#" ng-click="deleteTask($index)">X</a></td>
+        <tr todo-item ng-repeat="item in todoService.items | completedTasks: showCompleted" item="item">
         </tr>
       </div>
     </tbody>
   </table>
 
-  <button ng-click="clearComplete()">Clear Completed Tasks</button>
+  <button ng-click="todoService.clearComplete()">Clear Completed Tasks</button>
   <button ng-click="showCompleted = !showCompleted">{{ showCompleted ? "Hide Completed" : "Show Completed" }}</button>
 
   <script src="app.js"></script>
+  <script src="angular/services/todoService.js"></script>
   <script src="angular/controllers/TodoCtrl.js"></script>
+  <script src="angular/directives/TodoItem.js"></script>
   <script src="angular/filters/completedTasks.js"></script>
 
 
