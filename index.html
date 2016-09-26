@@ -17,9 +17,17 @@
 
 
 
+  <select ng-model="taskSortOpt">
+    <option value="default">Default</option>
+    <option value="completedTop">Completed at the Top</option>
+    <option value="completedBottom">Completed at the Bottom</option>
+    <option value="dueDateTop">Due Date Descending</option>
+    <option value="dueDateBottom">Due Date Ascending</option>
+  </select>
+
   <table>
     <tbody>
-        <tr todo-item ng-repeat="item in todoService.items | completedTasks: showCompleted" item="item">
+        <tr todo-item ng-repeat="item in todoService.items | completedTasks: showCompleted | sortTasks:taskSortOpt"item="item">
         </tr>
       </div>
     </tbody>
@@ -33,6 +41,7 @@
   <script src="angular/controllers/TodoCtrl.js"></script>
   <script src="angular/directives/TodoItem.js"></script>
   <script src="angular/filters/completedTasks.js"></script>
+  <script src="angular/filters/sortTasks.js"></script>
 
 
 </body>
